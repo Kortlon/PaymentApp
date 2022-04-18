@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.23560910307898258" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout-w936dp/activity_login.xml" value="0.27049180327868855" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/activity_login.xml" value="0.358695652173913" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/activity_main.xml" value="0.33454545454545453" />
       </map>
     </option>
