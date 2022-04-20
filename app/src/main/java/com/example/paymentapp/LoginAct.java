@@ -9,18 +9,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginActivity  extends AppCompatActivity {
+public class LoginAct  extends AppCompatActivity {
     EditText username, password;
     Button btnlogin;
     DBHelper DB;
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.act_login);
 
         username = (EditText) findViewById(R.id.username1);
         password = (EditText) findViewById(R.id.password1);
         btnlogin = (Button) findViewById(R.id.login1);
-    DB = new DBHelper(this);
+        DB = new DBHelper(this);
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,17 +28,17 @@ public class LoginActivity  extends AppCompatActivity {
                 String pass = password.getText().toString();
 
                 if(user.equals("") || pass.equals(""))
-                    Toast.makeText(LoginActivity.this,"Please enter all the fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginAct.this,"Please enter all the fields", Toast.LENGTH_SHORT).show();
                 else{
                     Boolean checkuserpass = DB.checkuserpass(user,pass);
                     if(checkuserpass ==true){
-                        Toast.makeText(LoginActivity.this,"Sign in successfull", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginAct.this,"Sign in successfull", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), HomeActitivy.class);
                         startActivity(intent);
 
 
                     }else{
-                        Toast.makeText(LoginActivity.this,"Invalid Credentials", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginAct.this,"Invalid Credentials", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
