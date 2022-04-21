@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_message"
+            android:icon="@drawable/ic_message"
+            android:title="Account" />
+
+
+    </group>
+    <item android:title="Funds">
+        <menu>
+            <item android:id="@+id/fundadd"
+                android:icon="@drawable/ic_message"
+                android:title="Add Funds" />
+            <item android:id="@+id/fundtransfer"
+                android:icon="@drawable/ic_message"
+                android:title="Transfer Funds" />
+            <item android:id="@+id/fundhistory"
+                android:icon="@drawable/ic_message"
+                android:title="Funds History" />
+        </menu>
+    </item>
+
+    <item android:title="Extra">
+        <menu>
+            <item android:id="@+id/setting"
+                android:icon="@drawable/ic_message"
+                android:title="Settings" />
+            <item android:id="@+id/contactus"
+                android:icon="@drawable/ic_message"
+                android:title="Contact Us" />
+            <item android:id="@+id/help"
+                android:icon="@drawable/ic_message"
+                android:title="Help" />
+        </menu>
+    </item>
+</menu>
