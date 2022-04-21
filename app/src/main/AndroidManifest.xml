@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PaymentApp">
         <activity
+            android:name=".NavigationAct"
+            android:exported="false"
+            android:label="@string/title_activity_navigation"
+            android:theme="@style/Theme.PaymentApp.NoActionBar" />
+        <activity
             android:name=".HomeActitivy"
             android:exported="false" />
         <activity
