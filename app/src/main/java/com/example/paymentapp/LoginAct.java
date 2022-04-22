@@ -11,7 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginAct  extends AppCompatActivity {
     EditText username, password;
-    Button btnlogin;
+    Button btnlogin, btnsignup;
+
     DBHelper DB;
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -20,6 +21,7 @@ public class LoginAct  extends AppCompatActivity {
         username = (EditText) findViewById(R.id.username1);
         password = (EditText) findViewById(R.id.password1);
         btnlogin = (Button) findViewById(R.id.login1);
+        btnsignup = (Button) findViewById(R.id.gotosignup);
         DB = new DBHelper(this);
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,13 +36,23 @@ public class LoginAct  extends AppCompatActivity {
                     if(checkuserpass ==true){
                         Toast.makeText(LoginAct.this,"Sign in successfull", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), HomeActitivy.class);
+                        intent.putExtra("username",user);
                         startActivity(intent);
+
+
 
 
                     }else{
                         Toast.makeText(LoginAct.this,"Invalid Credentials", Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+        btnsignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(in);
             }
         });
     }

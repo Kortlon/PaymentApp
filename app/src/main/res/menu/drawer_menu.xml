@@ -23,7 +23,7 @@
         </menu>
     </item>
 
-    <item android:title="Extra">
+    <item android:title=" ">
         <menu>
             <item android:id="@+id/setting"
                 android:icon="@drawable/ic_message"
