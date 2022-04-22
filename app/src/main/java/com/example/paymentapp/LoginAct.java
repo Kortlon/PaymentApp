@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class LoginAct  extends AppCompatActivity {
     EditText username, password;
     Button btnlogin, btnsignup;
-
+    public static final String EXTRA_TEXT = "username.payment";
     DBHelper DB;
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -35,8 +35,10 @@ public class LoginAct  extends AppCompatActivity {
                     Boolean checkuserpass = DB.checkuserpass(user,pass);
                     if(checkuserpass ==true){
                         Toast.makeText(LoginAct.this,"Sign in successfull", Toast.LENGTH_SHORT).show();
+
                         Intent intent = new Intent(getApplicationContext(), HomeActitivy.class);
-                        intent.putExtra("username",user);
+
+                        intent.putExtra(EXTRA_TEXT, user);
                         startActivity(intent);
 
 

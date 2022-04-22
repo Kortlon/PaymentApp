@@ -13,7 +13,8 @@
         <activity
             android:name=".HomeActitivy"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".LoginAct">
 
 
         </activity>

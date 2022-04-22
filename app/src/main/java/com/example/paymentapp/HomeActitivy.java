@@ -11,7 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import org.w3c.dom.Text;
+
 
 public class HomeActitivy extends AppCompatActivity {
     private DrawerLayout drawer;
@@ -20,14 +20,10 @@ public class HomeActitivy extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_actitivy);
-        Intent intent = getIntent();
-        String username = intent.getExtras().getString("username");
-       // TextView userview = (TextView) findViewById(R.id.headeruser);
-       // userview.setText("username");
 
 
          Toolbar toolbar = findViewById(R.id.toolbar);
-      //  Toolbar toolbar = findViewById(R.id.toolbar);
+
          setSupportActionBar(toolbar);
 
             drawer = findViewById(R.id.drawer_layout);
@@ -35,6 +31,15 @@ public class HomeActitivy extends AppCompatActivity {
            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
              drawer.addDrawerListener(toggle);
             toggle.syncState();
+            setUser();
+    }
+
+    public void setUser(){
+        Intent intent = getIntent();
+        //String text = intent.getStringExtra(LoginAct.EXTRA_TEXT);
+        String text = "username goes here";
+        TextView textview1 = (TextView) findViewById(R.id.headeruser);
+        textview1.setText(text);
     }
     @Override
     public void onBackPressed(){
