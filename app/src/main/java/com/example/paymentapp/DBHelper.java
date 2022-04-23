@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DBNAME = "Login.db";
@@ -21,6 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
     MyDB.execSQL("create Table users(username TEXT primary key, password TEXT)");
     MyDB.execSQL("create Table linkaccounts(AccountNum INT primary key, RoutingNUM INT, username TEXT)");
     MyDB.execSQL("create Table userdata(username TEXT primary key, email TEXT, phonenum TEXT )");
+    MyDB.execSQL("create Table transactions(id INT primary key autoincrement, amount DOUBLE, account INT)");
     }
 
     @Override
@@ -57,6 +61,24 @@ public class DBHelper extends SQLiteOpenHelper {
             return  true;
         else
             return false;
+
+    }
+
+    public List<String> getAccounts(){
+         List<String> accounts = new ArrayList<String>();
+        String selectQuery = "select AccountNum from linkaccounts";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery,null);
+        if (cursor.moveToFirst()) {
+            do {
+                accounts.add(cursor.getString(1));
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return accounts;
 
     }
 }

@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/acuti/StudioProjects/PaymentApp/app/src/main/res/layout/act_login.xml" value="0.1796875" />
+        <entry key="..\:/Users/acuti/StudioProjects/PaymentApp/app/src/main/res/layout/activity_home_actitivy.xml" value="0.22" />
+        <entry key="..\:/Users/acuti/StudioProjects/PaymentApp/app/src/main/res/layout/activity_main.xml" value="0.1453804347826087" />
+        <entry key="..\:/Users/acuti/StudioProjects/PaymentApp/app/src/main/res/layout/add_funds.xml" value="0.22" />
+        <entry key="..\:/Users/acuti/StudioProjects/PaymentApp/app/src/main/res/layout/addfunds.xml" value="0.1796875" />
+        <entry key="..\:/Users/acuti/StudioProjects/PaymentApp/app/src/main/res/layout/nav_header.xml" value="0.22" />
+        <entry key="..\:/Users/acuti/StudioProjects/PaymentApp/app/src/main/res/layout/transfer_funds.xml" value="0.22" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/drawable/ic_message.xml" value="0.3525" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.23560910307898258" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout-w936dp/activity_login.xml" value="0.27049180327868855" />

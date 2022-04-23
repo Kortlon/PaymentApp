@@ -5,16 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    EditText username,password,repassword;
-    Button signin, signup;
+    Spinner spinner;
+    EditText username,password,repassword,addAmount;
+    Button signin, signup, addFundButton;
     DBHelper DB;
+    Spinner choseAccount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         signup  = (Button) findViewById(R.id.signup);
         signin = (Button) findViewById(R.id.login);
         DB = new DBHelper(this);
+        choseAccount = (Spinner) findViewById(R.id.menuChoseAccount);
+        addFundButton = (Button) findViewById(R.id.addFundSubmitButton);
+        addAmount = (EditText) findViewById(R.id.editFundAmount);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(intent);
 
                             }else{
-                                Toast.makeText(MainActivity.this,"User already exist!!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this,"User already exists!!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }else{Toast.makeText(MainActivity.this,"Password Don't Match", Toast.LENGTH_SHORT).show();
@@ -65,5 +73,26 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        addFundButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+                public void onClick(View view){
+                String amount = addAmount.getText().toString();
+                String accountNumber = choseAccount.toString();
+                // idk how to add these to the transaction database
+            }
+        });
+
     }
+
+    private void loadAccountSpinner(){
+        DBHelper db = new DBHelper(getApplicationContext());
+        List<String> accounts = db.getAccounts();
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, accounts);
+        dataAdapter
+                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        choseAccount.setAdapter(dataAdapter);
+    }
+
 }
