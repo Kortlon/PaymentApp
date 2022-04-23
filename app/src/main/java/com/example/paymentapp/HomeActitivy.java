@@ -2,6 +2,8 @@ package com.example.paymentapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -11,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.navigation.NavigationView;
 
 
 public class HomeActitivy extends AppCompatActivity {
@@ -19,6 +22,7 @@ public class HomeActitivy extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_home_actitivy);
 
 
@@ -35,10 +39,11 @@ public class HomeActitivy extends AppCompatActivity {
     }
 
     public void setUser(){
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View header = navigationView.getHeaderView(0);
         Intent intent = getIntent();
-        //String text = intent.getStringExtra(LoginAct.EXTRA_TEXT);
-        String text = "username goes here";
-        TextView textview1 = (TextView) findViewById(R.id.headeruser);
+        String text = intent.getStringExtra(LoginAct.EXTRA_TEXT);
+        TextView textview1 = (TextView) header.findViewById(R.id.headeruser);
         textview1.setText(text);
     }
     @Override
