@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     EditText username,password,repassword,addAmount;
     Button signin, signup, addFundButton;
     DBHelper DB;
-    Spinner choseAccount;
+    Spinner chooseAccount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         signup  = (Button) findViewById(R.id.signup);
         signin = (Button) findViewById(R.id.login);
         DB = new DBHelper(this);
-        choseAccount = (Spinner) findViewById(R.id.menuChoseAccount);
+        chooseAccount = (Spinner) findViewById(R.id.menuChooseAccount);
         addFundButton = (Button) findViewById(R.id.addFundSubmitButton);
         addAmount = (EditText) findViewById(R.id.editFundAmount);
         signup.setOnClickListener(new View.OnClickListener() {
@@ -74,14 +73,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        addFundButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-                public void onClick(View view){
-                String amount = addAmount.getText().toString();
-                String accountNumber = choseAccount.toString();
-                // idk how to add these to the transaction database
-            }
-        });
 
     }
 
@@ -92,7 +83,17 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, accounts);
         dataAdapter
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        choseAccount.setAdapter(dataAdapter);
+        chooseAccount.setAdapter(dataAdapter);
+    }
+    private void addFundsTransaction(){
+        addFundButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                String value= addAmount.getText().toString();
+                int finalValue=Integer.parseInt(value);
+                DB.insertDataTransaction(finalValue, "Added Funds");
+            }
+        });
     }
 
 }
