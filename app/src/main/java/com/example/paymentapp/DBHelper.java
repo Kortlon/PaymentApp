@@ -31,11 +31,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public String checkcard(){
         Boolean set = true;
-        String cardset = String.valueOf('y');
+        String cardset = "Blank";
         while (set == true){
-            String first16 = String.valueOf((int) (Math.random() * 10000000000000000L));
+            long car16 = (int) (Math.random() * 1000000000000000000L);
+            String first16 = Long.toString(car16);
             SQLiteDatabase MyDB = this.getWritableDatabase();
-            Cursor cursor = MyDB.rawQuery("select * from cards where cardnum = ?" , new String[] {String.valueOf(first16)});
+            Cursor cursor = MyDB.rawQuery("select * from cards where cardnum = ?" , new String[] {first16});
             if (cursor.getCount() > 0)
                 set = true;
             else
@@ -55,11 +56,18 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             return true;
     }
-    public long getcard(String username){
-        SQLiteDatabase MyDB = this.getReadableDatabase();
+    public String getcard(String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor cursor = MyDB.rawQuery("Select cardnum from cards where username = ?",new String[] {username});
-         long card = cursor.getLong(1);
-            return card;
+        cursor.moveToFirst();
+        if(cursor.getCount() > 0) {
+            String num = cursor.getString(0);
+            return  num;
+        }
+        else
+           return "Blank Card";
+        // String card = cursor.getString(1);
+          //  return card;
     }
 
     public boolean insertData(String username, String password){

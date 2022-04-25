@@ -78,12 +78,14 @@ public class HomeActitivy extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View header = navigationView.getHeaderView(0);
         Intent intent = getIntent();
+
         String text = intent.getStringExtra(LoginAct.EXTRA_TEXT);
         TextView textview1 = (TextView) header.findViewById(R.id.headeruser);
         textview1.setText(text);
 
-        long cardnum = DB.getcard(text);
+        String cardnum = intent.getStringExtra(LoginAct.EXTRA_S);
         TextView textview2 = (TextView) header.findViewById(R.id.topheader);
+        textview2.setText(cardnum);
 
     }
 

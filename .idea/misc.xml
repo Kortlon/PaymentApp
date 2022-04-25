@@ -3,9 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.216" />
-        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/drawable/creditcard.xml" value="0.2725" />
-        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.216" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/drawable/ic_message.xml" value="0.3525" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.23560910307898258" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout-w936dp/activity_login.xml" value="0.27049180327868855" />
@@ -15,19 +12,28 @@
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/activity_main.xml" value="0.33454545454545453" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/activity_navigation.xml" value="0.33106884057971014" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/app_bar_navigation.xml" value="0.33106884057971014" />
-        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/card.xml" value="0.33" />
-        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/cardtest.xml" value="0.17147922998986828" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/content_navigation.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/creditcard.xml" value="0.17147922998986828" />
-        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/fragment_account.xml" value="0.22509057971014493" />
-        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/fragment_addfund.xml" value="0.22509057971014493" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/fragment_gallery.xml" value="0.33106884057971014" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/fragment_home.xml" value="0.33106884057971014" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/fragment_slideshow.xml" value="0.33106884057971014" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/nav_header.xml" value="0.34791666666666665" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/nav_header_navigation.xml" value="0.33106884057971014" />
-        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/partial_main_activity.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/menu/drawer_menu.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentAppnew/app/src/main/res/layout/act_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentAppnew/app/src/main/res/layout/activity_home_actitivy.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentAppnew/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentAppnew/app/src/main/res/layout/card.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentAppnew/app/src/main/res/layout/fragment_Addfunds.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentAppnew/app/src/main/res/layout/fragment_FundHistory.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentAppnew/app/src/main/res/layout/fragment_Transferfund.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentAppnew/app/src/main/res/layout/fragment_account.xml" value="0.33" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentAppnew/app/src/main/res/layout/fragment_addfund.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentAppnew/app/src/main/res/layout/fragment_fundhist.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentAppnew/app/src/main/res/layout/fragment_message.xml" value="0.25" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentAppnew/app/src/main/res/layout/fragment_transferfund.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentAppnew/app/src/main/res/layout/fragment_transfund.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentAppnew/app/src/main/res/layout/nav_header.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentAppnew/app/src/main/res/menu/drawer_menu.xml" value="0.36102564102564105" />
       </map>
     </option>
   </component>
