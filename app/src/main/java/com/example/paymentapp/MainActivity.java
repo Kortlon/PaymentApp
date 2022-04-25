@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
                         Boolean checkuser = DB.checkusername(user);
                         if(checkuser == false){
                             Boolean insert = DB.insertData(user, pass);
+                                String cardnum = DB.checkcard();
+                                Boolean insertcard = DB.insertCard(user,cardnum);
                             if(insert==true){
                                 Toast.makeText(MainActivity.this,"registered successfully",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(),HomeActitivy.class);
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     }else{Toast.makeText(MainActivity.this,"Password Don't Match", Toast.LENGTH_SHORT).show();
-                  }
+                    }
                 }
 
             }

@@ -21,7 +21,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class HomeActitivy extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
     private DrawerLayout drawer;
-
+    DBHelper DB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +73,7 @@ public class HomeActitivy extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+
     public void setUser(){
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View header = navigationView.getHeaderView(0);
@@ -80,7 +81,12 @@ public class HomeActitivy extends AppCompatActivity implements NavigationView.On
         String text = intent.getStringExtra(LoginAct.EXTRA_TEXT);
         TextView textview1 = (TextView) header.findViewById(R.id.headeruser);
         textview1.setText(text);
+
+        long cardnum = DB.getcard(text);
+        TextView textview2 = (TextView) header.findViewById(R.id.topheader);
+
     }
+
     @Override
     public void onBackPressed(){
         if (drawer.isDrawerOpen(GravityCompat.START)){
