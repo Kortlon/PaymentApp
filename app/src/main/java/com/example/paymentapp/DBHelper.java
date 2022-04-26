@@ -22,6 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
     MyDB.execSQL("create Table cards(username TEXT primary key, cardnum TEXT)");
     MyDB.execSQL("create Table linkaccounts(AccountNum INT primary key, RoutingNUM INT, username TEXT)");
     MyDB.execSQL("create Table userdata(username TEXT primary key, email TEXT, phonenum TEXT, FName TEXT, LNAME TEXT )");
+    MyDB.execSQL("create Table balance(cardnum TEXT primary key, bal REAL)");
     }
 
     @Override
@@ -33,7 +34,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Boolean set = true;
         String cardset = "Blank";
         while (set == true){
-            long car16 = (int) (Math.random() * 1000000000000000000L);
+            long car16 = (long) (Math.random() * 1000000000000000L);
             String first16 = Long.toString(car16);
             SQLiteDatabase MyDB = this.getWritableDatabase();
             Cursor cursor = MyDB.rawQuery("select * from cards where cardnum = ?" , new String[] {first16});

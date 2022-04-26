@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     EditText username,password,repassword;
     Button signin, signup;
     DBHelper DB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                                 Boolean insertcard = DB.insertCard(user,cardnum);
                             if(insert==true){
                                 Toast.makeText(MainActivity.this,"registered successfully",Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(),HomeActitivy.class);
+                                Intent intent = new Intent(getApplicationContext(),LoginAct.class);
                                 startActivity(intent);
 
                             }else{
