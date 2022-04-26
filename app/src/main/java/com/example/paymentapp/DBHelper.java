@@ -34,7 +34,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Boolean set = true;
         String cardset = "Blank";
         while (set == true){
-            long car16 = (long) (Math.random() * 1000000000000000L);
+            long car16 = (long) (Math.random() * 10000000000000000L);
             String first16 = Long.toString(car16);
             SQLiteDatabase MyDB = this.getWritableDatabase();
             Cursor cursor = MyDB.rawQuery("select * from cards where cardnum = ?" , new String[] {first16});

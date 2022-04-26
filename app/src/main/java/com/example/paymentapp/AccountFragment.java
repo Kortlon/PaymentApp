@@ -27,21 +27,7 @@ public class AccountFragment extends Fragment {
        return root;
     }
 
-    public void setText() {
-        super.onStart();
-        TextView card = (TextView) getView().findViewById(R.id.cardnum);
 
-        // String intent =  getActivity().getIntent().getStringExtra(LoginAct.EXTRA_TEXT);
-        String intent = "THis is a new string";
-        //  String user = intent.ext
-        LayoutInflater inflat = getLayoutInflater();
-        View view = inflat.inflate(R.layout.fragment_account,null);
-        TextView text2 = (TextView) view.findViewById(R.id.accountname1);
-        text2.setText(intent);
-        // String cardnum = DB.getcard();
-
-
-    }
     public void setcardnum(){
 
     }
