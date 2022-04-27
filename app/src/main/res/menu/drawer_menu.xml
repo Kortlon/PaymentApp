@@ -13,6 +13,9 @@
     </group>
     <item android:title="Funds">
         <menu>
+            <item android:id="@+id/addbank"
+                android:icon="@drawable/ic_message"
+                android:title="Add Bank" />
             <item android:id="@+id/fundadd"
                 android:icon="@drawable/ic_message"
                 android:title="Add Funds" />

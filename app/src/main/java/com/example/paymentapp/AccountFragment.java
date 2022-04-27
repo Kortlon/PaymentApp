@@ -30,12 +30,10 @@ public class AccountFragment extends Fragment {
         TextView textView3 = (TextView) root.findViewById(R.id.balance);
         textView3.setText(balance);
         TextView textView1 = (TextView) root.findViewById(R.id.balancelabel);
-        textView1.setText("Balance: ");
+       textView1.setText("Balance: ");
        return root;
     }
 
 
-    public void setcardnum(){
 
-    }
 }

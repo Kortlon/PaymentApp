@@ -18,17 +18,17 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     public DBHelper(@Nullable Context context) {
-        super(context, "Login.db", null , 1) ;
+        super(context, "Login.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
-    MyDB.execSQL("create Table users(username TEXT primary key, password TEXT)");
-    MyDB.execSQL("create Table cards(username TEXT primary key, cardnum TEXT)");
-    MyDB.execSQL("create Table linkaccounts(AccountNum INT primary key, RoutingNUM INT, username TEXT)");
-    MyDB.execSQL("create Table userdata(username TEXT primary key, email TEXT, phonenum TEXT, FName TEXT, LNAME TEXT )");
-    MyDB.execSQL("create Table balance(cardnum TEXT primary key, bal REAL)");
-    MyDB.execSQL("create Table transactions(id INTEGER primary key, amount REAL, label TEXT)");
+        MyDB.execSQL("create Table users(username TEXT primary key, password TEXT)");
+        MyDB.execSQL("create Table cards(username TEXT primary key, cardnum TEXT)");
+        MyDB.execSQL("create Table linkaccounts(AccountNum INTEGER primary key, RoutingNUM INTEGER, username TEXT)");
+        MyDB.execSQL("create Table userdata(username TEXT primary key, email TEXT, phonenum TEXT, FName TEXT, LNAME TEXT )");
+        MyDB.execSQL("create Table balance(cardnum TEXT primary key, bal REAL)");
+        MyDB.execSQL("create Table transactions(id INTEGER primary key, amount REAL, label TEXT)");
 
     }
 
@@ -45,85 +45,87 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int i, int i1) {
-    MyDB.execSQL("drop Table if exists users");
+        MyDB.execSQL("drop Table if exists users");
     }
 
-    public String checkcard(){
+    public String checkcard() {
         Boolean set = true;
         String cardset = "Blank";
-        while (set == true){
+        while (set == true) {
             long car16 = (long) (Math.random() * 10000000000000000L);
             String first16 = Long.toString(car16);
             SQLiteDatabase MyDB = this.getWritableDatabase();
-            Cursor cursor = MyDB.rawQuery("select * from cards where cardnum = ?" , new String[] {first16});
+            Cursor cursor = MyDB.rawQuery("select * from cards where cardnum = ?", new String[]{first16});
             if (cursor.getCount() > 0)
                 set = true;
             else
                 cardset = first16;
-                set = false;
+            set = false;
         }
-       return cardset;
+        return cardset;
     }
-    public boolean insertCard(String username, String card){
+
+    public boolean insertCard(String username, String card) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("username",username);
-        contentValues.put("cardnum",card);
+        contentValues.put("username", username);
+        contentValues.put("cardnum", card);
 
-        long result = MyDB.insert("cards",null,contentValues);
+        long result = MyDB.insert("cards", null, contentValues);
         if (result == -1) return false;
         else
             return true;
     }
-    public String getcard(String username){
+
+    public String getcard(String username) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select cardnum from cards where username = ?",new String[] {username});
+        Cursor cursor = MyDB.rawQuery("Select cardnum from cards where username = ?", new String[]{username});
         cursor.moveToFirst();
-        if(cursor.getCount() > 0) {
+        if (cursor.getCount() > 0) {
             String num = cursor.getString(0);
-            return  num;
-        }
-        else
-           return "Blank Card";
+            return num;
+        } else
+            return "Blank Card";
         // String card = cursor.getString(1);
-          //  return card;
+        //  return card;
     }
 
-    public boolean insertData(String username, String password){
+    public boolean insertData(String username, String password) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("username",username);
-        contentValues.put("password",password);
+        contentValues.put("username", username);
+        contentValues.put("password", password);
 
-        long result = MyDB.insert("users",null, contentValues);
+        long result = MyDB.insert("users", null, contentValues);
         if (result == -1) return false;
         else
             return true;
     }
 
-    public boolean checkusername(String username){
+    public boolean checkusername(String username) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from users where username = ?",new String[] {username});
-        if(cursor.getCount() > 0)
+        Cursor cursor = MyDB.rawQuery("Select * from users where username = ?", new String[]{username});
+        if (cursor.getCount() > 0)
             return true;
         else
             return false;
     }
-    public Boolean checkuserpass (String username, String password){
-        SQLiteDatabase MyDB =this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("select * from users where username = ? and password = ?", new String[] {username,password});
+
+    public Boolean checkuserpass(String username, String password) {
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("select * from users where username = ? and password = ?", new String[]{username, password});
         if (cursor.getCount() > 0)
-            return  true;
+            return true;
         else
             return false;
 
     }
 
-    public List<String> getAccounts(){
+    public List<String> getAccounts() {
         List<String> accounts = new ArrayList<String>();
         String selectQuery = "select AccountNum from linkaccounts";
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery,null);
+        Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
                 accounts.add(cursor.getString(1));
@@ -134,7 +136,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return accounts;
     }
 
-    public boolean insertDataTransaction(double amount, String label){
+    public boolean insertDataTransaction(double amount, String label) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -142,58 +144,57 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("label", label);
         db.insert("transactions", null, contentValues);
 
-        contentValues.put(amountCol, amount);
-        contentValues.put(transactionLabel, label);
 
-        long result = db.insert("transactions",null, contentValues);
+        long result = db.insert("transactions", null, contentValues);
         if (result == -1)
             return false;
         else
             return true;
     }
 
-
-    public boolean insertDataBank(int accountNumber, int routingNumber){
+    public boolean insertDataBank(int accountNumber, int routingNumber) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("AccountNum", accountNumber);
         contentValues.put("RoutingNUM", routingNumber);
         db.insert("linkaccounts", null, contentValues);
-        long result = db.insert("linkaccounts",null, contentValues);
+        long result = db.insert("linkaccounts", null, contentValues);
         if (result == -1)
             return false;
         else
             return true;
-
-    public ArrayList<String> getTransactions() {
-        ArrayList<String> transactions = new ArrayList<String>();
-        String selectQuery = "select * from transactions";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
-            do {
-                transactions.add(cursor.getString(2) + "          $" + cursor.getString(1));
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        db.close();
-        return transactions;
     }
 
-    public String getTotal(){
-        double sum = 0;
-        String selectQuery = "select * from transactions";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
-            do {
-                sum += Double.parseDouble(cursor.getString(1));
-            } while (cursor.moveToNext());
+        public ArrayList<String> getTransactions () {
+            ArrayList<String> transactions = new ArrayList<String>();
+            String selectQuery = "select * from transactions";
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            if (cursor.moveToFirst()) {
+                do {
+                    transactions.add(cursor.getString(2) + "          $" + cursor.getString(1));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            db.close();
+            return transactions;
         }
-        cursor.close();
-        db.close();
-        String sumString = String.valueOf(sum);
-        return sumString;
 
+        public String getTotal () {
+            double sum = 0;
+            String selectQuery = "select * from transactions";
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            if (cursor.moveToFirst()) {
+                do {
+                    sum += Double.parseDouble(cursor.getString(1));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            db.close();
+            String sumString = String.valueOf(sum);
+            return sumString;
+
+        }
     }
-}
+
