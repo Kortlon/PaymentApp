@@ -15,8 +15,7 @@ import java.util.List;
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DBNAME = "Login.db";
-    public static final String amountCol = "amount";
-    public static final String transactionLabel = "label";
+
 
     public DBHelper(@Nullable Context context) {
         super(context, "Login.db", null , 1) ;
@@ -138,14 +137,33 @@ public class DBHelper extends SQLiteOpenHelper {
     public boolean insertDataTransaction(double amount, String label){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+
+        contentValues.put("amount", amount);
+        contentValues.put("label", label);
+        db.insert("transactions", null, contentValues);
+
         contentValues.put(amountCol, amount);
         contentValues.put(transactionLabel, label);
+
         long result = db.insert("transactions",null, contentValues);
         if (result == -1)
             return false;
         else
             return true;
     }
+
+
+    public boolean insertDataBank(int accountNumber, int routingNumber){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("AccountNum", accountNumber);
+        contentValues.put("RoutingNUM", routingNumber);
+        db.insert("linkaccounts", null, contentValues);
+        long result = db.insert("linkaccounts",null, contentValues);
+        if (result == -1)
+            return false;
+        else
+            return true;
 
     public ArrayList<String> getTransactions() {
         ArrayList<String> transactions = new ArrayList<String>();
@@ -176,5 +194,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
         String sumString = String.valueOf(sum);
         return sumString;
+
     }
 }
