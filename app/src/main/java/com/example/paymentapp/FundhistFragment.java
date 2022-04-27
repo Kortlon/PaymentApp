@@ -33,7 +33,7 @@ public class FundhistFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_fundhist, container, false);
         ListView listView = root.findViewById(R.id.transactionlist);
         ArrayList<String> listItems= DB.getTransactions();
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_2, listItems);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listItems);
         if (listItems != null)
             listView.setAdapter(dataAdapter);
         return root;

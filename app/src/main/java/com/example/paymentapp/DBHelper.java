@@ -135,12 +135,11 @@ public class DBHelper extends SQLiteOpenHelper {
         return accounts;
     }
 
-    public boolean insertDataTransaction(int amount, String label){
+    public boolean insertDataTransaction(double amount, String label){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(amountCol, amount);
         contentValues.put(transactionLabel, label);
-        db.insert("transactions", null, contentValues);
         long result = db.insert("transactions",null, contentValues);
         if (result == -1)
             return false;
@@ -152,14 +151,30 @@ public class DBHelper extends SQLiteOpenHelper {
         ArrayList<String> transactions = new ArrayList<String>();
         String selectQuery = "select * from transactions";
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery,null);
+        Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
-                transactions.add(cursor.getString(1));
+                transactions.add(cursor.getString(2) + "          $" + cursor.getString(1));
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
         return transactions;
+    }
+
+    public String getTotal(){
+        double sum = 0;
+        String selectQuery = "select * from transactions";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                sum += Double.parseDouble(cursor.getString(1));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        String sumString = String.valueOf(sum);
+        return sumString;
     }
 }

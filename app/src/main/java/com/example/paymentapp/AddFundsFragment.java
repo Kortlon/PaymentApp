@@ -17,7 +17,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import java.util.List;
 
-public class AddFundsFragment extends Fragment {
+public class AddFundsFragment extends Fragment implements View.OnClickListener {
     DBHelper DB;
     Button addFundButton;
     EditText addAmount;
@@ -30,7 +30,11 @@ public class AddFundsFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_addfund, container, false);
         chooseAccount = root.findViewById(R.id.menuChooseAccount);
-        String[] test = new String[]{"hello", "darkness", "my" , "old", "friend"};
+        addFundButton = root.findViewById(R.id.addFundSubmitButton);
+        addFundButton.setOnClickListener(this);
+        addAmount = root.findViewById(R.id.editFundAmount);
+        DB = new DBHelper(getContext());
+        String[] test = new String[]{"hello", "darkness", "my", "old", "friend"};
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, test);
         chooseAccount.setAdapter(dataAdapter);
         return root;
@@ -38,27 +42,20 @@ public class AddFundsFragment extends Fragment {
 
     }
 
-    private void loadAccountSpinner() {
+    //private void loadAccountSpinner() {
 
-     //  List<String> accounts = DB.getAccounts();
-      // String[] test = new String[]{"hello", "darkness", "my" , "old", "friend"};
-
-
+    //  List<String> accounts = DB.getAccounts();
+    // String[] test = new String[]{"hello", "darkness", "my" , "old", "friend"};
 
 
-      /*  private void addFundsTransaction () {
-            addFundButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String value = addAmount.getText().toString();
-                    int finalValue = Integer.parseInt(value);
-                    DB.insertDataTransaction(finalValue, "Added Funds");
-                }
-            });
-        }
-*/
 
+
+    @Override
+    public void onClick(View view) {
+        String value = addAmount.getText().toString();
+        double finalValue = Double.parseDouble(value);
+        DB.insertDataTransaction(finalValue, "Added Funds");
+        addAmount.setText("");
     }
 
-    }
-//}
+}
