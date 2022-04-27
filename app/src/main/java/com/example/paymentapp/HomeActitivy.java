@@ -87,6 +87,8 @@ public class HomeActitivy extends AppCompatActivity implements NavigationView.On
         TextView textview2 = (TextView) header.findViewById(R.id.topheader);
         textview2.setText(cardnum);
 
+
+
     }
 
     @Override
