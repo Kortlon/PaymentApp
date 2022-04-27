@@ -147,4 +147,19 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             return true;
     }
+
+    public ArrayList<String> getTransactions() {
+        ArrayList<String> transactions = new ArrayList<String>();
+        String selectQuery = "select * from transactions";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery,null);
+        if (cursor.moveToFirst()) {
+            do {
+                transactions.add(cursor.getString(1));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return transactions;
+    }
 }
