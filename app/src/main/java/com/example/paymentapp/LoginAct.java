@@ -13,6 +13,7 @@ public class LoginAct  extends AppCompatActivity {
     EditText username, password;
     Button btnlogin, btnsignup;
     public static final String EXTRA_TEXT = "username.payment";
+    public static final String EXTRA_S = "card.payment";
     DBHelper DB;
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -28,7 +29,7 @@ public class LoginAct  extends AppCompatActivity {
             public void onClick(View view) {
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
-
+                String card = DB.getcard(user);
                 if(user.equals("") || pass.equals(""))
                     Toast.makeText(LoginAct.this,"Please enter all the fields", Toast.LENGTH_SHORT).show();
                 else{
@@ -37,7 +38,7 @@ public class LoginAct  extends AppCompatActivity {
                         Toast.makeText(LoginAct.this,"Sign in successfull", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(getApplicationContext(), HomeActitivy.class);
-
+                         intent.putExtra(EXTRA_S,card);
                         intent.putExtra(EXTRA_TEXT, user);
                         startActivity(intent);
 
