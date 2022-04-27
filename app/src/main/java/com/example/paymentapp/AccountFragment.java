@@ -10,10 +10,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class AccountFragment extends Fragment {
+    DBHelper db;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        db = new DBHelper(getContext());
        // setText();
         String intent =  getActivity().getIntent().getStringExtra(LoginAct.EXTRA_S);
         String s1 = intent.substring(0, 4);
@@ -24,6 +26,11 @@ public class AccountFragment extends Fragment {
        View root = inflater.inflate(R.layout.fragment_account, container, false);
        TextView outputtext = root.findViewById(R.id.cardnum);
         outputtext.setText(finalcard);
+        String balance = db.getTotal();
+        TextView textView3 = (TextView) root.findViewById(R.id.balance);
+        textView3.setText(balance);
+        TextView textView1 = (TextView) root.findViewById(R.id.balancelabel);
+        textView1.setText("Balance: ");
        return root;
     }
 

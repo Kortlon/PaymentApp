@@ -169,15 +169,17 @@
         android:text="BALANCE:"
         android:textSize="30dp"
         />
+
     <TextView
+        android:id="@+id/balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/balancelabel"
-        android:layout_marginLeft="20dp"
         android:layout_below="@id/cardlayout"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="400dp"
+        android:layout_toRightOf="@+id/balancelabel"
         android:text="$$$$"
-        android:textSize="30dp"/>
+        android:textSize="30dp" />
 
 
 

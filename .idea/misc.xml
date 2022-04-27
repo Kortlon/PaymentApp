@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/camer/Desktop/Android App/PaymentApp/app/src/main/res/layout/activity_home_actitivy.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/camer/Desktop/Android App/PaymentApp/app/src/main/res/layout/activity_main.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/camer/Desktop/Android App/PaymentApp/app/src/main/res/layout/fragment_account.xml" value="0.144" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.216" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/drawable/creditcard.xml" value="0.2725" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.216" />
@@ -19,10 +22,8 @@
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/cardtest.xml" value="0.17147922998986828" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/content_navigation.xml" value="0.358695652173913" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/creditcard.xml" value="0.17147922998986828" />
-        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/dropdown_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/fragment_account.xml" value="0.33" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/fragment_addfund.xml" value="0.33" />
-        <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/fragment_first.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/fragment_fundhist.xml" value="0.1" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/fragment_gallery.xml" value="0.33106884057971014" />
         <entry key="..\:/Users/kortl/AndroidStudioProjects/PaymentApp/app/src/main/res/layout/fragment_home.xml" value="0.33106884057971014" />
