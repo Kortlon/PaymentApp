@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 
@@ -24,13 +25,24 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
     MyDB.execSQL("create Table users(username TEXT primary key, password TEXT)");
-    MyDB.execSQL("create Table cards(username TEXT primary key, cardnum TEXT, bal REAL)");
+    MyDB.execSQL("create Table cards(username TEXT primary key, cardnum TEXT)");
     MyDB.execSQL("create Table linkaccounts(AccountNum INT primary key, RoutingNUM INT, username TEXT)");
     MyDB.execSQL("create Table userdata(username TEXT primary key, email TEXT, phonenum TEXT, FName TEXT, LNAME TEXT )");
     MyDB.execSQL("create Table balance(cardnum TEXT primary key, bal REAL)");
     MyDB.execSQL("create Table transactions(id INTEGER primary key, amount REAL, label TEXT)");
 
     }
+
+    // EditText amo = amount;
+    //*
+    // carnum = getcard(username);
+    // bal = cardgetbal(cardnum)
+    // transferamount = balance - amount
+    // editcardbalance(cardnum, transfer)
+    // transactionadd( amount, label)
+    // user;
+    //
+    //
 
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int i, int i1) {
