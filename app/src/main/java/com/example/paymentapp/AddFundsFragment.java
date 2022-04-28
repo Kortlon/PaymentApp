@@ -47,23 +47,13 @@ public class AddFundsFragment extends Fragment implements View.OnClickListener {
         addFundButton.setOnClickListener(this);
         addAmount = root.findViewById(R.id.editFundAmount);
         DB = new DBHelper(getContext());
-        List<String> accounts = DB.getAccounts();
+        String intent =  getActivity().getIntent().getStringExtra(LoginAct.EXTRA_TEXT);
+        List<String> accounts = DB.getAccounts(intent);
 
-      //  String[] test = new String[]{"hello", "darkness", "my", "old", "friend"};
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, accounts);
         chooseAccount.setAdapter(dataAdapter);
         return root;
-
-
     }
-
-    //private void loadAccountSpinner() {
-
-    //  List<String> accounts = DB.getAccounts();
-    // String[] test = new String[]{"hello", "darkness", "my" , "old", "friend"};
-
-
-
 
     @Override
     public void onClick(View view) {

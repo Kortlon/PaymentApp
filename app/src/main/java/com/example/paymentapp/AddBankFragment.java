@@ -18,19 +18,27 @@ public class AddBankFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.add_bankaccount, container, false);
+            View root = inflater.inflate(R.layout.add_bankaccount, container, false);
 
-        addBankButton = root.findViewById(R.id.addBankButton);
-        addBankButton.setOnClickListener(this);
-        return root;
+        editAccountNumber = root.findViewById(R.id.editAccountNumber);
+        editRoutingNumber = root.findViewById(R.id.editRoutingNumber);
+            addBankButton = root.findViewById(R.id.addBankButton);
+            addBankButton.setOnClickListener(this);
+        DB = new DBHelper(getContext());
+            return root;
 
     }
     @Override
     public void onClick(View view) {
-        String accountValue = editAccountNumber.getText().toString();
+
+      String accountValue = editAccountNumber.getText().toString();
         String routingValue = editRoutingNumber.getText().toString();
-        int finalAccountValue = Integer.parseInt(accountValue);
+         int finalAccountValue = Integer.parseInt(accountValue);
         int finalRoutingValue = Integer.parseInt(routingValue);
-        DB.insertDataBank(finalAccountValue, finalRoutingValue);
+
+
+        String username =  getActivity().getIntent().getStringExtra(LoginAct.EXTRA_TEXT);
+
+        DB.insertDataBank(finalAccountValue, finalRoutingValue, username);
     }
     }

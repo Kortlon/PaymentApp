@@ -31,13 +31,18 @@ public class FundhistFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_fundhist, container, false);*/
 
         View root = inflater.inflate(R.layout.fragment_fundhist, container, false);
+
         ListView listView = root.findViewById(R.id.transactionlist);
+
         String intent =  getActivity().getIntent().getStringExtra(LoginAct.EXTRA_TEXT);
         ArrayList<String> listItems= DB.getTransactions(intent);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listItems);
         if (listItems != null)
             listView.setAdapter(dataAdapter);
+
         return root;
+
+
     }
 
 }

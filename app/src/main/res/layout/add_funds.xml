@@ -60,7 +60,7 @@
         android:id="@+id/textLblAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Account to Withdraw From"
+        android:text="Select Account Number Withdraw From"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.246"
