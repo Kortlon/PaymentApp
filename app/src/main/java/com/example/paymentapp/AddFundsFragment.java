@@ -75,7 +75,7 @@ public class AddFundsFragment extends Fragment implements View.OnClickListener {
         int time = (int) (date.getTime() / 1000);
         String username = intent;
         DB.insertDataTransaction(finalValue, "Added Funds", time ,username);
-        //could add intent to send to home after funds have transfered
+        //could add intent to send to home after funds have transferred
         addAmount.setText("");
 
 
