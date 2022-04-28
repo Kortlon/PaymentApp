@@ -52,9 +52,11 @@ public class AddFundsFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        String value = addAmount.getText().toString();
-        double finalValue = Double.parseDouble(value);
-        DB.insertDataTransaction(finalValue, "Added Funds");
+        if (!(addAmount.getText().toString() == "")){
+            String value = addAmount.getText().toString();
+            double finalValue = Double.parseDouble(value);
+            DB.insertDataTransaction(finalValue, "Added Funds");
+        }
         addAmount.setText("");
     }
 

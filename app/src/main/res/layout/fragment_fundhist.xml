@@ -2,21 +2,20 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:theme="@style/ThemeOverlay.AppCompat.Light">
-
+    android:layout_height="match_parent">
     <TextView
         android:id="@+id/simpleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Transactions"
-        android:textSize="20sp" />
+        android:textSize="25dp"
+        android:textColor="@color/black"/>
 
-    <ListView
-        android:id="@+id/transactionlist"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/simpleTextView"
-        android:drawSelectorOnTop="false" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAnimals"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/simpleTextView"/>
+
 </RelativeLayout>

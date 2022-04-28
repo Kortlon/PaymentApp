@@ -9,13 +9,15 @@ import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class FundhistFragment extends Fragment {
     DBHelper DB;
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
-    ArrayAdapter<String> adapter;
+    MyRecyclerViewAdapter adapter;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -30,12 +32,20 @@ public class FundhistFragment extends Fragment {
             listView.setAdapter(adapter);
         return inflater.inflate(R.layout.fragment_fundhist, container, false);*/
 
+
         View root = inflater.inflate(R.layout.fragment_fundhist, container, false);
-        ListView listView = root.findViewById(R.id.transactionlist);
         ArrayList<String> listItems= DB.getTransactions();
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listItems);
+
+
+        // set up the RecyclerView
+        RecyclerView recyclerView = root.findViewById(R.id.rvAnimals);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new MyRecyclerViewAdapter(getContext(), listItems);
         if (listItems != null)
-            listView.setAdapter(dataAdapter);
+            recyclerView.setAdapter(adapter);
+
+
+
         return root;
     }
 
