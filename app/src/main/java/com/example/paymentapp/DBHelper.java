@@ -28,7 +28,7 @@ public class DBHelper extends SQLiteOpenHelper {
         MyDB.execSQL("create Table linkaccounts(AccountNum INTEGER primary key, RoutingNUM INTEGER, username TEXT)");
         MyDB.execSQL("create Table userdata(username TEXT primary key, email TEXT, phonenum TEXT, FName TEXT, LNAME TEXT )");
         MyDB.execSQL("create Table balance(cardnum TEXT primary key, bal REAL)");
-        MyDB.execSQL("create Table transactions(id INTEGER primary key, date TEXT, amount REAL, label TEXT, username TEXT)");
+        MyDB.execSQL("create Table transactions(id INTEGER primary key, date INTEGER, amount REAL, label TEXT, username TEXT)");
 
     }
 
@@ -136,7 +136,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return accounts;
     }
 
-    public boolean insertDataTransaction(double amount, String label, String date, String username) {
+    public boolean insertDataTransaction(double amount, String label, int date, String username) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -170,12 +170,12 @@ public class DBHelper extends SQLiteOpenHelper {
         public ArrayList<String> getTransactions (String username) {
             ArrayList<String> transactions = new ArrayList<String>();
             SQLiteDatabase MyDB = this.getWritableDatabase();
-            Cursor cursor = MyDB.rawQuery("select * from transactions where username = ? " ,new String[]{username});
+            Cursor cursor = MyDB.rawQuery("select DATETIME(date,'unixepoch'), amount, label from transactions where username = ? " ,new String[]{username});
 
-          //  Cursor cursor = db.rawQuery(selectQuery, null);
+
             if (cursor.moveToFirst()) {
                 do {
-                    transactions.add(cursor.getString(2) + " $  " + cursor.getString(1) +"  --" + cursor.getString(3));
+                    transactions.add(cursor.getString(1) + " $  " + cursor.getString(0) +"  --" + cursor.getString(2));
                 } while (cursor.moveToNext());
             }
             cursor.close();

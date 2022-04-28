@@ -16,8 +16,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +34,7 @@ public class AddFundsFragment extends Fragment implements View.OnClickListener {
     Button addFundButton;
     EditText addAmount;
     Spinner chooseAccount;
+    public static final DateTimeFormatter GENERAL_TZ_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z").withZone(ZoneId.systemDefault());
 
     @Nullable
     @Override
@@ -41,6 +48,7 @@ public class AddFundsFragment extends Fragment implements View.OnClickListener {
         addAmount = root.findViewById(R.id.editFundAmount);
         DB = new DBHelper(getContext());
         List<String> accounts = DB.getAccounts();
+
       //  String[] test = new String[]{"hello", "darkness", "my", "old", "friend"};
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, accounts);
         chooseAccount.setAdapter(dataAdapter);
@@ -59,17 +67,20 @@ public class AddFundsFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+
         String intent =  getActivity().getIntent().getStringExtra(LoginAct.EXTRA_TEXT);
         String value = addAmount.getText().toString();
-        double finalValue = Double.parseDouble(value);
-        TimeZone tz = TimeZone.getTimeZone("CST");
-        DateFormat df = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS"); // Quoted "Z" to indicate UTC, no timezone offset
-        df.setTimeZone(tz);
-        String date = df.format(new Date());
-
+        double finalValue = Double.valueOf(value);
+        Date date = new Date();
+        int time = (int) (date.getTime() / 1000);
         String username = intent;
-        DB.insertDataTransaction(finalValue, "Added Funds", date ,username);
+        DB.insertDataTransaction(finalValue, "Added Funds", time ,username);
+        //could add intent to send to home after funds have transfered
         addAmount.setText("");
+
+
+
+
     }
 
 }
