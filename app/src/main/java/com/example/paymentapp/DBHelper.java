@@ -28,7 +28,7 @@ public class DBHelper extends SQLiteOpenHelper {
         MyDB.execSQL("create Table linkaccounts(AccountNum INTEGER primary key, RoutingNUM INTEGER, username TEXT)");
         MyDB.execSQL("create Table userdata(username TEXT primary key, email TEXT, phonenum TEXT, FName TEXT, LNAME TEXT )");
         MyDB.execSQL("create Table balance(cardnum TEXT primary key, bal REAL)");
-        MyDB.execSQL("create Table transactions(id INTEGER primary key, amount REAL, label TEXT)");
+        MyDB.execSQL("create Table transactions(id INTEGER primary key, date TEXT, amount REAL, label TEXT, username TEXT)");
 
     }
 
@@ -52,7 +52,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Boolean set = true;
         String cardset = "Blank";
         while (set == true) {
-            long car16 = (long) (Math.random() * 10000000000000000L);
+            long car16 = (long) (Math.random() * 100000000000000000L);
             String first16 = Long.toString(car16);
             SQLiteDatabase MyDB = this.getWritableDatabase();
             Cursor cursor = MyDB.rawQuery("select * from cards where cardnum = ?", new String[]{first16});
@@ -128,7 +128,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
-                accounts.add(cursor.getString(1));
+                accounts.add(cursor.getString(0));
             } while (cursor.moveToNext());
         }
         cursor.close();
@@ -136,12 +136,14 @@ public class DBHelper extends SQLiteOpenHelper {
         return accounts;
     }
 
-    public boolean insertDataTransaction(double amount, String label) {
+    public boolean insertDataTransaction(double amount, String label, String date, String username) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put("amount", amount);
         contentValues.put("label", label);
+        contentValues.put("date", date);
+        contentValues.put("username",username);
         db.insert("transactions", null, contentValues);
 
 
@@ -165,18 +167,19 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
     }
 
-        public ArrayList<String> getTransactions () {
+        public ArrayList<String> getTransactions (String username) {
             ArrayList<String> transactions = new ArrayList<String>();
-            String selectQuery = "select * from transactions";
-            SQLiteDatabase db = this.getReadableDatabase();
-            Cursor cursor = db.rawQuery(selectQuery, null);
+            SQLiteDatabase MyDB = this.getWritableDatabase();
+            Cursor cursor = MyDB.rawQuery("select * from transactions where username = ? " ,new String[]{username});
+
+          //  Cursor cursor = db.rawQuery(selectQuery, null);
             if (cursor.moveToFirst()) {
                 do {
-                    transactions.add(cursor.getString(2) + "          $" + cursor.getString(1));
+                    transactions.add(cursor.getString(2) + " $  " + cursor.getString(1) +"  --" + cursor.getString(3));
                 } while (cursor.moveToNext());
             }
             cursor.close();
-            db.close();
+            MyDB.close();
             return transactions;
         }
 
