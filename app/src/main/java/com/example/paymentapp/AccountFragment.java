@@ -1,5 +1,6 @@
 package com.example.paymentapp;
 
+import java.lang.*;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ public class AccountFragment extends Fragment {
        View root = inflater.inflate(R.layout.fragment_account, container, false);
        TextView outputtext = root.findViewById(R.id.cardnum);
         outputtext.setText(finalcard);
-        String balance = db.getTotal();
+        String balance = "$" + (Math.round(Double.parseDouble(db.getTotal()) * 100) / 100.0);
         TextView textView3 = (TextView) root.findViewById(R.id.balance);
         textView3.setText(balance);
         TextView textView1 = (TextView) root.findViewById(R.id.balancelabel);
