@@ -52,6 +52,10 @@ public class HomeActitivy extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.addbank:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new AddBankFragment()).commit();
+                break;
             case R.id.nav_message:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new AccountFragment()).commit();
