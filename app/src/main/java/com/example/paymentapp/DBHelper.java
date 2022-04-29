@@ -135,9 +135,6 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("label", label);
         contentValues.put("date", date);
         contentValues.put("username",username);
-        db.insert("transactions", null, contentValues);
-
-
         long result = db.insert("transactions", null, contentValues);
         if (result == -1)
             return false;

@@ -41,13 +41,11 @@ public class AddBankFragment extends Fragment implements View.OnClickListener {
 
 
         String username =  getActivity().getIntent().getStringExtra(LoginAct.EXTRA_TEXT);
-        if(finalAccountValue > 0 && finalRoutingValue > 0 ){
+
             DB.insertDataBank(finalAccountValue, finalRoutingValue, username);
             replaceFragment(new AccountFragment());
-        }
-      else{
-            Toast.makeText (getActivity (),"Fill in all text boxes", Toast.LENGTH_SHORT).show ();
-        }
+
+
     }
     public void replaceFragment(Fragment fragment)
     {
