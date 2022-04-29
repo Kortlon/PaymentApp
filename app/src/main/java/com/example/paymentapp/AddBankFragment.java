@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -40,9 +41,13 @@ public class AddBankFragment extends Fragment implements View.OnClickListener {
 
 
         String username =  getActivity().getIntent().getStringExtra(LoginAct.EXTRA_TEXT);
-
-        DB.insertDataBank(finalAccountValue, finalRoutingValue, username);
-        replaceFragment(new AccountFragment());
+        if(finalAccountValue > 0 && finalRoutingValue > 0 ){
+            DB.insertDataBank(finalAccountValue, finalRoutingValue, username);
+            replaceFragment(new AccountFragment());
+        }
+      else{
+            Toast.makeText (getActivity (),"Fill in all text boxes", Toast.LENGTH_SHORT).show ();
+        }
     }
     public void replaceFragment(Fragment fragment)
     {
