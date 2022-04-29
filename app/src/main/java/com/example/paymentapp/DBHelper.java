@@ -203,5 +203,14 @@ public class DBHelper extends SQLiteOpenHelper {
             return sumString;
 
         }
+        public double getBalance(String cardnum){
+        double bal = 0;
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery("SELECT bal FROM balance where cardnum = ?",new String[] {cardnum});
+            bal = cursor.getDouble(0);
+            return bal;
+        }
+
+
     }
 

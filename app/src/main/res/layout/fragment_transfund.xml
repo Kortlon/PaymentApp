@@ -1,18 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Accoount Fragment" />
+  >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:text="Account Frament"/>
+    android:background="@color/white">
+
+    <EditText
+        android:id="@+id/txtAmount"
+        android:layout_width="241dp"
+        android:layout_height="63dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="364dp"
+        android:layout_marginEnd="83dp"
+        android:ems="10"
+        android:hint="amount"
+        android:inputType="numberDecimal"
+        tools:text="Amount" />
+
+    <EditText
+        android:id="@+id/txtRecipientId"
+        android:layout_width="240dp"
+        android:layout_height="66dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="226dp"
+        android:layout_marginEnd="86dp"
+        android:ems="10"
+        android:hint="id_of_recipient"
+        android:inputType="textPersonName"
+        tools:text="ID of Recipient" />
+
+    <include
+        layout="@layout/nav_header"
+        android:layout_width="match_parent"
+        android:layout_height="170dp" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="154dp"
+        android:layout_height="58dp"
+        android:layout_below="@+id/txtAmount"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="129dp"
+        android:layout_marginBottom="190dp"
+        android:text="button"
+        tools:text="Submit" />
+
+
 </RelativeLayout>
