@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.Date;
 
@@ -45,12 +47,23 @@ public class TransferfundFragment extends Fragment implements View.OnClickListen
             Date date = new Date();
             int time = (int) (date.getTime() / 1000);
             String cardNum = DB.getcard(username);
-            // double balance = DB.getBalance(cardNum);
+            double balance = DB.getBalance(username);
+
             double transfer = -1 * ammt;
             double revtransfer = ammt;
-            DB.insertDataTransaction(revtransfer, "Transferred recieved funds", time, transferusername);
-            DB.insertDataTransaction(transfer, "Transferred sent funds", time, username);
-            Toast.makeText (getActivity (),"Submitted", Toast.LENGTH_SHORT).show ();
+            if (balance < revtransfer){
+                Toast.makeText (getActivity (),"Not Enough Money", Toast.LENGTH_SHORT).show ();
+            }
+            if(ammt < 0){
+                Toast.makeText (getActivity (),"Money Not Valid", Toast.LENGTH_SHORT).show ();
+
+            }
+            if(balance >= revtransfer){
+                DB.insertDataTransaction(revtransfer, "Transferred recieved funds", time, transferusername);
+                DB.insertDataTransaction(transfer, "Transferred sent funds", time, username);
+                Toast.makeText (getActivity (),"Submitted", Toast.LENGTH_SHORT).show ();
+                replaceFragment(new AccountFragment());
+            }
         }
         else{
             Toast.makeText (getActivity (),"enter a user that exist!!", Toast.LENGTH_SHORT).show ();
@@ -59,6 +72,11 @@ public class TransferfundFragment extends Fragment implements View.OnClickListen
 
 
     }
-
-
+public void replaceFragment(Fragment fragment)
+{
+    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+    fragmentTransaction.replace(R.id.fragment_container,fragment);
+    fragmentTransaction.commitNow();
+}
 }

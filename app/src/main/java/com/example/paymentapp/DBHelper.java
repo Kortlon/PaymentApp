@@ -193,12 +193,23 @@ public class DBHelper extends SQLiteOpenHelper {
             return sumString;
 
         }
-        public double getBalance(String cardnum){
-        double bal = 0;
+        public double getBalance(String username){
+            double sum = 0;
             SQLiteDatabase db = this.getReadableDatabase();
-            Cursor cursor = db.rawQuery("SELECT bal FROM balance where cardnum = ?",new String[] {cardnum});
-            bal = cursor.getDouble(0);
-            return bal;
+            Cursor cursor = db.rawQuery("select amount from transactions where username = ? GROUP BY date",new String[]{username} );
+            int numoflines = cursor.getCount();
+            cursor.moveToFirst();
+            cursor.getColumnIndex("amount");
+            for(int i = 1; i <= numoflines; i++){
+
+                double num = cursor.getDouble(0);
+                sum += num;
+                cursor.moveToNext();
+                cursor.getColumnIndex("amount");
+            }
+
+            return sum;
+
         }
 
 

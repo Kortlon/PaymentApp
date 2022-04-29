@@ -14,6 +14,8 @@ import android.content.Intent;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.text.DateFormat;
 import java.text.NumberFormat;
@@ -67,10 +69,17 @@ public class AddFundsFragment extends Fragment implements View.OnClickListener {
         DB.insertDataTransaction(finalValue, "Added Funds", time ,username);
         //could add intent to send to home after funds have transfered
         addAmount.setText("");
+        replaceFragment(new AccountFragment());
 
 
 
-
+    }
+    public void replaceFragment(Fragment fragment)
+    {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container,fragment);
+        fragmentTransaction.commitNow();
     }
 
 }
