@@ -38,15 +38,24 @@ public class TransferfundFragment extends Fragment implements View.OnClickListen
     public void onClick(View view) {
         String username = getActivity().getIntent().getStringExtra(LoginAct.EXTRA_TEXT);
         String amt = amount.getText().toString();
-        double ammt = Double.parseDouble(amt);
-        Date date = new Date();
-        int time = (int) (date.getTime() / 1000);
-        String cardNum = DB.getcard(username);
-       // double balance = DB.getBalance(cardNum);
-        double transfer = -1 * ammt;
+        String transferusername = recipientId.getText().toString();
+        boolean checkuser = DB.checkusername(transferusername);
+        if(checkuser == true){
+            double ammt = Double.parseDouble(amt);
+            Date date = new Date();
+            int time = (int) (date.getTime() / 1000);
+            String cardNum = DB.getcard(username);
+            // double balance = DB.getBalance(cardNum);
+            double transfer = -1 * ammt;
+            double revtransfer = ammt;
+            DB.insertDataTransaction(revtransfer, "Transferred recieved funds", time, transferusername);
+            DB.insertDataTransaction(transfer, "Transferred sent funds", time, username);
+            Toast.makeText (getActivity (),"Submitted", Toast.LENGTH_SHORT).show ();
+        }
+        else{
+            Toast.makeText (getActivity (),"enter a user that exist!!", Toast.LENGTH_SHORT).show ();
+        }
 
-        DB.insertDataTransaction(transfer, "Transferred funds", time, username);
-        Toast.makeText (getActivity (),"Submitted", Toast.LENGTH_SHORT).show ();
 
 
     }
